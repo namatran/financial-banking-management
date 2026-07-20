@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { LogoutButton } from "@/components/auth/LogoutButton";
+import LogoutButton from "@/components/auth/LogoutButton";
 
 /**
  * Layout for every route under /protected.
