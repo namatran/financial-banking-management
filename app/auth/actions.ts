@@ -4,6 +4,12 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+
+if (!SITE_URL) {
+  throw new Error("CRITICAL CONFIGURATION ERROR: NEXT_PUBLIC_SITE_URL environment variable is missing.");
+}
+
 /**
  * Shape returned to the client on failure so forms can render an
  * inline error instead of relying on a thrown exception.
