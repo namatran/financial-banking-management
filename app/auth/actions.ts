@@ -19,7 +19,13 @@ type ActionResult = { error: string } | void;
 export async function login(formData: FormData): Promise<ActionResult> {
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");
-  const redirectTo = String(formData.get("redirectTo") ?? "/protected");
+  const requestedRedirect = String(formData.get("redirectTo") ?? "/protected");
+  
+  // CodeRabbit's Fix: Safe same-origin relative path check
+  const redirectTo =
+    requestedRedirect.startsWith("/") && !requestedRedirect.startsWith("//")
+      ? requestedRedirect
+      : "/protected";
 
   if (!email || !password) {
     return { error: "Email and password are required." };
@@ -40,9 +46,6 @@ export async function login(formData: FormData): Promise<ActionResult> {
   revalidatePath("/", "layout");
   redirect(redirectTo);
 }
-
-/**
- * Email + password sign up.
  * Supabase sends a confirmation email by default (configurable in
  * Dashboard > Authentication > Providers > Email). The user isn't
  * fully authenticated until they click the link and hit /auth/confirm.
