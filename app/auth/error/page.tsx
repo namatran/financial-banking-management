@@ -17,4 +17,4 @@ const AuthErrorPage = () => {
   );
 };
 
-export default AuthErrorPage;
+export default AuthErrorPage

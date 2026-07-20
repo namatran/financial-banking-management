@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { LoginForm } from "@/components/auth/LoginForm";
-import { OAuthButtons } from "@/components/auth/OAuthButtons";
+import LoginForm from "@/components/auth/LoginForm";
+import OAuthButtons from "@/components/auth/OAuthButtons";
 
 const LoginPage = () => {
   return (
@@ -23,4 +23,4 @@ const LoginPage = () => {
   );
 }
 
-export default LoginPage;
+export default LoginPage

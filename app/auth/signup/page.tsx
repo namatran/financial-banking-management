@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { SignupForm } from "@/components/auth/SignupForm";
-import { OAuthButtons } from "@/components/auth/OAuthButtons";
+import SignupForm from "@/components/auth/SignupForm";
+import OAuthButtons from "@/components/auth/OAuthButtons";
 
 const SignupPage = () => {
   return (
@@ -22,4 +22,4 @@ const SignupPage = () => {
   );
 }
 
-export default SignupPage;
+export default SignupPage

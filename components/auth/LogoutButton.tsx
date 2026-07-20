@@ -3,7 +3,7 @@
 import { useTransition } from "react";
 import { logout } from "@/app/auth/actions";
 
-export function LogoutButton() {
+const LogoutButton = () => {
   const [isPending, startTransition] = useTransition();
 
   return (
@@ -17,3 +17,5 @@ export function LogoutButton() {
     </button>
   );
 }
+
+export default LogoutButton
