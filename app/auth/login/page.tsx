@@ -1,8 +1,8 @@
 import { Suspense } from "react";
-import { LoginForm } from "@/components/auth/LoginForm";
-import { OAuthButtons } from "@/components/auth/OAuthButtons";
+import LoginForm from "@/components/auth/LoginForm";
+import OAuthButtons from "@/components/auth/OAuthButtons";
 
-export default function LoginPage() {
+const LoginPage = () => {
   return (
     <div className="mx-auto flex min-h-screen max-w-sm flex-col justify-center px-4">
       <h1 className="mb-6 text-2xl font-semibold">Sign in</h1>
@@ -22,3 +22,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default LoginPage

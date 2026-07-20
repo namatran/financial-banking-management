@@ -52,6 +52,7 @@ export async function login(formData: FormData): Promise<ActionResult> {
   revalidatePath("/", "layout");
   redirect(redirectTo);
 }
+/** 
  * Supabase sends a confirmation email by default (configurable in
  * Dashboard > Authentication > Providers > Email). The user isn't
  * fully authenticated until they click the link and hit /auth/confirm.

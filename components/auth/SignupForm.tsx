@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { signup } from "@/app/auth/actions";
 
-export function SignupForm() {
+const SignupForm = () => {
   const searchParams = useSearchParams();
   const checkEmail = searchParams.get("check-email") === "1";
 
@@ -98,3 +98,5 @@ export function SignupForm() {
     </form>
   );
 }
+
+export default SignupForm

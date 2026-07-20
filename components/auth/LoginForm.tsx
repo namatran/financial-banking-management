@@ -5,9 +5,16 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { login, signInWithMagicLink } from "@/app/auth/actions";
 
-export function LoginForm() {
+const LoginForm = () => {
   const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") ?? "/protected";
+  const requestedRedirect = searchParams.get("redirectTo") ?? "/protected";
+  
+  // FIX: Restore CodeRabbit's validation rule to block phishing links
+  const redirectTo =
+    requestedRedirect.startsWith("/") && !requestedRedirect.startsWith("//")
+      ? requestedRedirect
+      : "/protected";
+
   const checkEmail = searchParams.get("check-email") === "1";
 
   const [error, setError] = useState<string | null>(null);
@@ -19,8 +26,6 @@ export function LoginForm() {
     startTransition(async () => {
       const action = mode === "password" ? login : signInWithMagicLink;
       const result = await action(formData);
-      // Server Actions only return here on failure — success paths
-      // call redirect(), which throws internally and never reaches us.
       if (result?.error) setError(result.error);
     });
   }
@@ -106,3 +111,5 @@ export function LoginForm() {
     </form>
   );
 }
+
+export default LoginForm

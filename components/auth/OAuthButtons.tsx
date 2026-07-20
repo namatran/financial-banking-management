@@ -8,7 +8,7 @@ import { signInWithOAuth } from "@/app/auth/actions";
  * no client-side Supabase call needed, so the anon key never has to
  * handle the redirect logic itself.
  */
-export function OAuthButtons() {
+const OAuthButtons = () => {
   return (
     <div className="grid grid-cols-2 gap-3">
       <form action={signInWithOAuth.bind(null, "google")}>
@@ -30,3 +30,5 @@ export function OAuthButtons() {
     </div>
   );
 }
+
+export default OAuthButtons
